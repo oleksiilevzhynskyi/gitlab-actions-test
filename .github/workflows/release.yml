@@ -1,5 +1,7 @@
 on:
   push:
+    branches:
+      - main
     tags:
     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
@@ -13,9 +15,6 @@ jobs:
       - name: Branch name
         id: branch_name
         run: |
-          echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
-          echo ::set-output name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
-          echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
           echo ::set-output name=TARBALL::grammarly-focal-${GITHUB_REF#refs/tags/}.tgz
       - name: Checkout code
         uses: actions/checkout@v2
