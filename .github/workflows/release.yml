@@ -1,7 +1,5 @@
 on:
   push:
-    branches:
-      - main
     tags:
     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
@@ -9,6 +7,9 @@ name: Upload Release Asset
 
 jobs:
   build:
+    # There is not a way to run workflow on push tag on specfic branch.
+    # The job should be skipped when running for a non-master branch
+    if: github.event.base_ref == 'refs/heads/master'
     name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
