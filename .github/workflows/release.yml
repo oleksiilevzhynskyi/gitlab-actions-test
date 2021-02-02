@@ -9,7 +9,7 @@ jobs:
   build:
     # There is not a way to run workflow on push tag on specfic branch.
     # The job should be skipped when running for a non-master branch
-    if: github.event.base_ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
