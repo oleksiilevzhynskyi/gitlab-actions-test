@@ -9,7 +9,7 @@ jobs:
   build:
     # There is not a way to run workflow on push tag on specfic branch.
     # The job should be skipped when running for a non-master branch
-    if: github.ref == 'refs/heads/main'
+    # if: github.ref == 'refs/heads/main'
     name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
@@ -17,6 +17,10 @@ jobs:
         id: branch_name
         run: |
           echo ::set-output name=TARBALL::grammarly-focal-${GITHUB_REF#refs/tags/}.tgz
+      - name: test
+        run: |
+          echo ${{ github.ref }}
+          echo $GITHUB_REF
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build project # This would actually build your project, using zip for an example artifact
