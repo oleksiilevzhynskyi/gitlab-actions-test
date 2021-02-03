@@ -26,8 +26,6 @@ jobs:
         run: |
           yarn pack --filename ${{ steps.branch_name.outputs.TARBALL }}
           ls -alh
-      - name: Upload Release Asset
-        id: upload-release-asset
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
