@@ -30,6 +30,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./packages/focal/${{ steps.branch_name.outputs.TARBALL }}
+          file: ./${{ steps.branch_name.outputs.TARBALL }}
           asset_name: ${{ steps.branch_name.outputs.TARBALL }}
           tag: ${{ github.ref }}
